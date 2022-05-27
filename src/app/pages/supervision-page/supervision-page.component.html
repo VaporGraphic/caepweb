@@ -1,0 +1,132 @@
+<div class="container">
+    
+    <h1 class="titleFont text-caep fw-bold text-center text-md-start">Supervision clínica</h1>
+
+    <!--BANNER OFERTA ACADEMICA-->
+    <section class="d-none d-md-block">
+        <div class="row bg-caep mt-3 rounded-more px-3">
+            <div class="col-12 col-md-auto d-flex justify-content-center p-2 ">
+                <img src="../../../assets/images/atencion/atencion-clinica-icon.webp" class="imgOfertaAcademica" alt="">
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="w-100">
+                
+                <br>
+                <span class="lead fw-bold text-white ">
+                    Tenemos la atención que tú y tu familia se merece
+                </span>
+                
+                <p class=" text-white pt-2">
+                    Nuestra mision es proveer atencion clinica especializada de la mejor calidad, para niños, adolecentes y parejas.
+                    <br>
+                    <span class="small opacity-75">
+                        Comunícate con nosotros a través de WhatsApp o por teléfono y con gusto agendaremos tu cita
+                    </span>
+                </p>
+                <div class="row">
+                   
+                    <div class="col d-flex justify-content-end ">
+                        <button class="btn  btn-link" type="button">
+                            <span class="text-light">
+                                <i class="bi bi-whatsapp"></i>
+                                <span class="ms-2">
+                                    Solicitar más informacion
+                                </span>
+                            </span>
+                        </button>
+
+                        <button class="btn ms-2   btn-light" type="button">
+                            <span class="">
+                                <i class="bi bi-telephone"></i>
+                                <span class="ms-2">
+                                    Agendar una cita
+                                </span>
+                            </span>
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!--SECTION SMALL-->
+    <section class="d-block d-md-none text-center">
+        <span class="small fw-bold">
+            Tenemos la atención que tú y tu familia se merece
+        </span>
+        <br>
+        <span class="small opacity-75">
+            Comunícate con nosotros a través de WhatsApp o por teléfono y con gusto agendaremos tu cita
+        </span>
+
+        <div class="row mt-3">
+                   
+            <div class="col d-flex justify-content-between ">
+                <button class="btn  btn-light" type="button">
+                    <span class="">
+                        <i class="bi bi-whatsapp"></i>
+                        <span class="ms-2">
+                            Solicitar más info
+                        </span>
+                    </span>
+                </button>
+
+                <button class="btn ms-2 btn-primary" type="button">
+                    <span class="">
+                        <i class="bi bi-telephone"></i>
+                        <span class="ms-2 ">
+                            Agendar una cita
+                        </span>
+                    </span>
+                </button>
+            </div>
+            
+        </div>
+
+    </section>
+
+
+    <section class="mt-4">
+        <div class="row lead fw-bold">
+            <div class="col">
+            Nuestros servicios de atencion
+                
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class=" p-2 " *ngFor="let tipoAtencion of ListAntencionClinica">
+                <div class="card p-3 rounded-more shadow-sm">
+                     <div class="row">
+                            <div class="col-md-auto col-12 d-flex justify-content-center">
+                                <img class="img-fluid imageService " src="../../../assets/images/atencion/{{tipoAtencion.img}}.webp" alt="">
+                            </div>
+                            <div class="col-md-9 col-12 mt-3">
+                                <h3 class="lead fw-bold text-center text-md-start">
+                                    {{tipoAtencion.titulo}}
+                                </h3>
+                              <p class="text-justify small">
+                                  {{tipoAtencion.descripcion}}
+                              
+                              </p>
+                            </div>
+
+                     </div>
+                </div>
+            </div>
+
+         
+            
+        </div>
+    </section>
+
+   
+
+</div>
+
+
+
+
+
+

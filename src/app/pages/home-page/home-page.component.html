@@ -1,0 +1,95 @@
+<div class="container">
+    <!--BIENVENIDA-->
+    <section class="row">
+        <div class="col-md-6 col-12  d-flex align-items-center">
+           <section>
+
+            <p class="titleFont lead fw-bold">Centro de atención y enseñanza psicoanalítica</p>
+            <h1 class="titleFont text-caep fw-bold">
+                Bienvenido a CAEP México
+            </h1> 
+            <br class="d-none d-md-block">
+            <p >Comprometidos con la atención clínica, enseñanza y constante actualización psicoanalítica </p>
+
+            <!--BTN GRANDES-->
+            <section  class="d-none d-md-block pb-5 ">
+
+                <button class="btn btn-primary bg-caep btn-lg my-2 me-2" type="button" (click)="navigateRoute('/servicios')">Conoce nuestros servicios</button>
+                <button class="btn btn-light btn-lg my-2 " type="button" (click)="navigateRoute('/contacto')">Contactanos</button>  
+                 
+            </section>
+
+            <!--BTN CHICOS-->
+
+            <section  class="d-md-none d-block ">
+
+                <button class="btn btn-primary bg-caep my-2 me-2" type="button" (click)="navigateRoute('/servicios')" >Conoce nuestros servicios</button>
+                <button class="btn btn-light   my-2 " type="button" (click)="navigateRoute('/contacto')">Contactanos</button>  
+               
+            </section>
+
+            
+        </section>
+
+        
+        </div>
+        <div class="col-md-6 col-12 ">
+            <img class="img-fluid" src="../../../assets/images/home/landing.webp" alt="">
+        </div>
+    </section>
+    
+
+    <br>
+
+    <!--NOSOTROS-->
+    <section class="row py-4">
+        <div class="col-12 fw-bold lead text-center pb-3">
+            ¿Quienes somos?
+        </div>
+        <div class="col-12 text-center col-md-4 " *ngFor="let info of listAboutUs">
+            <div class="w-100 d-flex justify-content-center pb-2">
+                <div class="iconContainer d-flex align-items-center justify-content-center">
+                    <i class="bi {{info.icon}} lead text-light"></i>
+                </div>
+   
+            </div>
+            <p class="fw-bold">{{info.title}}</p>
+            <p class="text-lines-3 my-0">{{info.text}}</p>
+            <button (click)="leerMas(info.title, info.text, info.icon)"  class="btn btn-link btn-sm my-0" type="button">Leer más <i class="bi bi-arrow-right-short"></i></button>
+            <br>
+            <br>
+        </div>
+        
+    </section>
+
+    <br>
+
+   
+    <!--CARROUSEL EVENTOS-->
+    <div class="row">
+        <div class="col-12 mb-4 fw-bold lead text-center">
+            Eventos recientes
+        </div>
+        
+        <div class="col-12">
+           <!-- <ng-image-slider [imageSize]="{width: '300px', height: '250px', space: 4}" [animationSpeed]='.5' [infinite]="true" [manageImageRatio]="true" [showArrow]="true" [images]="imageObject" #nav></ng-image-slider>
+        -->
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <!--EVENTOS Y REDES SOCIALES-->
+    <section class="row d-none">
+        <div class="col-12 col-md">
+            Ejemplo
+        </div>
+        <div class="col-12 d-flex justify-content-center bg-caep  p-3 rounded-2 col-md-auto">
+            <iframe class="rounded" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fpsicologia.psicoanalisis.saludmental&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
+    </section>
+
+   
+</div>

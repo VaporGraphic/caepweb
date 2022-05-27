@@ -1,0 +1,68 @@
+<div class="container-fluid bg-light">
+    <br>
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-7 col-12 mb-5 ">
+                <!--UBICACION-->
+                    <div class="row mb-2">
+                        <div class="col-auto d-flex align-items-center">
+                            <div class="icon-container bg-caep">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </div>
+                        </div>
+                        <div class="col d-flex align-items-center">
+                                <a class="text-dark small fw-bold" href="https://goo.gl/maps/YwwT9CF4hhfXyudT6" target="_blank">
+                                    Ahuatepec 13, Lomas de Cristo, 56225 Méx.
+                                </a>
+
+                        </div>
+                    </div>
+                <!--NUMERO-->
+                <div class="row mb-2">
+                    <div class="col-auto d-flex align-items-center">
+                        <div class="icon-container bg-caep">
+                            <i class="bi bi-telephone-fill"></i>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-center">
+                      
+                            <a class="text-dark small fw-bold" href="tel:55-3145-3808" target="_blank">
+                                55 3145 3808
+                            </a>
+
+                    </div>
+                </div>
+                <!--CORREO-->
+                <div class="row ">
+                    <div class="col-auto d-flex align-items-center">
+                        <div class="icon-container bg-caep">
+                            <i class="bi bi-envelope-fill"></i>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-center">
+                      
+                            <a class="text-dark small fw-bold " href="mailto:caep.internacional@gmail.com" target="_blank">
+                                caep.internacional@gmail.com
+                            </a>
+
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-md-5 col-12 ">
+                   <p class="fw-bold text-caep titleFont ">Centro de atención y enseñanza psicoanalítica México</p>
+               <p class="small">
+                   Comprometidos con la atención clínica, enseñanza y constante actualización psicoanalítica
+               </p>
+                <div class="d-flex justify-content-sm-end justify-content-center pt-4 pb-5">
+
+                    <a href="{{social.link}}" target="_blank" class="btn-sm btn-link" type="button" *ngFor="let social of _listSocial">
+                        <i class="bi {{social.icon}} text-caep lead "></i>
+                      </a>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+</div>

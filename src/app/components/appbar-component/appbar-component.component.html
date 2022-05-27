@@ -1,0 +1,68 @@
+<div class="container-fluid d-flex align-items-center appbar">
+    <div class="container">
+      <div
+        class="row d-flex align-items-center text-align-center text-center fw-bold"
+      >
+        <!--BRAND LOGO-->
+        <div class="col-auto p-0">
+          <img  (click)="navigateRoute('/inicio')"
+            class="brandImage " 
+            src="../../../assets/images/brand/icon-logo-webp.webp"
+            alt="Logo CAEP"
+          />
+        </div>
+        <!--LIST SECTIONS FULL-->
+        <div class="col d-flex justify-content-end">
+          <section class="d-none d-md-block">
+            <!--PAGES-->
+            <div class="row">
+              <div class="col-auto px-0" *ngFor="let section of _listSections">
+                <button class="btn text-caep" type="button" (click)="navigateRoute(section.route)">
+                  <span class="fw-bold bntSections">{{ section.titulo }}</span>
+                </button>
+              </div>
+            <!--SOCIAL MEDIA-->
+
+              <div class="col-auto">
+                <div class="row">
+                  <div class="col-auto px-0" *ngFor="let social of _listSocial">
+                    <a href="{{social.link}}" target="_blank" class="btn btn-link" type="button">
+
+                      <i class="bi {{social.icon}} {{social.color}} lead "></i>
+                    </a>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!--LIST SECTIONS SMALL-->
+          <section class="d-block d-md-none">
+              <div ngbDropdown container="body">
+                  <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle>
+                      <i class="bi bi-list btnSections lead"></i>
+                  </button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+                  <!--PAGES-->
+                    <button (click)="navigateRoute(section.route)"  ngbDropdownItem *ngFor="let section of _listSections">
+                      <button class="btn btnSections" type="button" >
+                          <span class="fw-bold bntSections">{{ section.titulo }}</span>
+                        </button>
+                    </button>
+                  <!--SOCIAL-->
+                    <div class="px-4" >
+                          <a href="{{social.link}}" target="_blank" class="btn btn-link" type="button" *ngFor="let social of _listSocial">
+                            <i class="bi {{social.icon}} {{social.color}} lead "></i>
+                          </a>
+  
+                       
+                    </div>
+                 
+                  </div>
+                </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>

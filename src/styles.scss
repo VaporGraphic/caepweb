@@ -1,1 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+
+*{
+    font-family: 'DM Sans', sans-serif;
+}
+
+.titleFont{
+    font-family: 'Merriweather', serif;
+}
+
+.text-caep{
+        color: #092C9E !important;
+       
+}
+
+.bg-caep{
+    background-color: #092C9E !important;
+   
+}
+
+.rounded-more{
+    border-radius: 10px !important;
+}
+
+
+.text-lines-1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+            line-clamp: 1; 
+    -webkit-box-orient: vertical;
+ }
+.text-lines-2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+            line-clamp: 2; 
+    -webkit-box-orient: vertical;
+ }
+
+ .text-lines-3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+            line-clamp: 3; 
+    -webkit-box-orient: vertical;
+ }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
