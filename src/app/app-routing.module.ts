@@ -1,3 +1,4 @@
+import { EventosPageComponent } from './pages/eventos-page/eventos-page.component';
 import { SupervisionPageComponent } from './pages/supervision-page/supervision-page.component';
 import { ServiciosPageComponent } from './pages/servicios-page/servicios-page.component';
 import { AtencionPageComponent } from './pages/atencion-page/atencion-page.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'atencion', component: AtencionPageComponent },
   { path: 'servicios', component: ServiciosPageComponent },
   { path: 'supervision', component: SupervisionPageComponent },
+  { path: 'eventos', component: EventosPageComponent },
   { path: '**', pathMatch: 'full', 
         redirectTo: 'servicios' },
 

@@ -14,6 +14,10 @@ import { ServiciosPageComponent } from './pages/servicios-page/servicios-page.co
 import { SupervisionPageComponent } from './pages/supervision-page/supervision-page.component';
 
 
+//IMAGE SLIDER
+import { NgImageSliderModule } from 'ng-image-slider';
+import { EventosPageComponent } from './pages/eventos-page/eventos-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,9 +29,11 @@ import { SupervisionPageComponent } from './pages/supervision-page/supervision-p
     AtencionPageComponent,
     ServiciosPageComponent,
     SupervisionPageComponent,
+    EventosPageComponent,
 
   ],
   imports: [
+    NgImageSliderModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule

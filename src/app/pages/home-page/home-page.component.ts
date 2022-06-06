@@ -31,6 +31,17 @@ export class HomePageComponent implements OnInit {
     }
   ];
 
+
+  
+  imageObject: Array<object> = [
+    {
+      image: 'https://scontent.fmex23-1.fna.fbcdn.net/v/t39.30808-6/281144581_2287325514753084_6522208894657366562_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=730e14&_nc_eui2=AeH28aKSjbukgLC-U63BS-9gWPwIqdPqSoNY_Aip0-pKg_zv610bP7dsq2Tz6Vi8LqwBaVv2fQiTbQ8oA4roKmnp&_nc_ohc=CNw5KSSpB20AX8Y7V1Q&tn=w7eWj-oxsm3fTr8v&_nc_ht=scontent.fmex23-1.fna&oh=00_AT9BZaqVQl4WcqElLLam1RvNfjKMOdgTFGV5U3yQ-NOZ7w&oe=62961D73',
+      thumbImage: 'https://scontent.fmex23-1.fna.fbcdn.net/v/t39.30808-6/281144581_2287325514753084_6522208894657366562_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=730e14&_nc_eui2=AeH28aKSjbukgLC-U63BS-9gWPwIqdPqSoNY_Aip0-pKg_zv610bP7dsq2Tz6Vi8LqwBaVv2fQiTbQ8oA4roKmnp&_nc_ohc=CNw5KSSpB20AX8Y7V1Q&tn=w7eWj-oxsm3fTr8v&_nc_ht=scontent.fmex23-1.fna&oh=00_AT9BZaqVQl4WcqElLLam1RvNfjKMOdgTFGV5U3yQ-NOZ7w&oe=62961D73',
+      alt: 'alt of image',
+      }
+   
+];
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {

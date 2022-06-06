@@ -19,7 +19,7 @@ export class AppbarComponentComponent implements OnInit {
     'route': '/atencion'
     },
     {'titulo':'Eventos',
-    'route': '/inicio'
+    'route': '/eventos'
     },
     {'titulo':'Supervision clínica',
     'route': '/supervision'
