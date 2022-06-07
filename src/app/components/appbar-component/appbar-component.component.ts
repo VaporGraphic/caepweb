@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-appbar-component',
@@ -9,23 +10,32 @@ import { Router } from '@angular/router';
 export class AppbarComponentComponent implements OnInit {
 
   _listSections = [
-    {'titulo':'Inicio',
-    'route': '/inicio'
+    {titulo:'Inicio',
+    route: '/inicio',
+    selected:false
     },
-    {'titulo':'Oferta academica',
-    'route': '/oferta'
+    {titulo:'Oferta academica',
+    route: '/oferta'
+    ,selected:false
     },
-    {'titulo':'Atención clínica',
-    'route': '/atencion'
+    {titulo:'Atención clínica',
+    route: '/atencion'
+    ,selected:false
+
     },
-    {'titulo':'Eventos',
-    'route': '/eventos'
+    {titulo:'Supervision clínica',
+    route: '/supervision'
+    ,selected:false
+
     },
-    {'titulo':'Supervision clínica',
-    'route': '/supervision'
+    {titulo:'Eventos',
+    route: '/eventos'
+    ,selected:false
+
     },
-    {'titulo':'Contactanos',
-    'route': '/contacto'
+    {titulo:'Contactanos',
+    route: '/contacto'
+    ,selected:false
     },
   ];
 
@@ -51,14 +61,33 @@ export class AppbarComponentComponent implements OnInit {
   }
    ]
 
-  constructor(private router: Router) { }
+  
+   
+  constructor(private router: Router, private activatedRoute:ActivatedRoute) {
+    
+   }
 
   ngOnInit(): void {
+    
+    this.establecerSeleccion(this.router.url);
   }
 
+  
+
   navigateRoute(route:string){
-    console.log(route);
+    this.establecerSeleccion(route);
     this.router.navigate([route]);
+  }
+
+  establecerSeleccion(route:string){
+    for (let index = 0; index < this._listSections.length; index++) {
+      if(this._listSections[index].route!== route){
+        this._listSections[index].selected = false;
+      }else{
+        this._listSections[index].selected = true;
+      }
+    }
+
   }
 
 }

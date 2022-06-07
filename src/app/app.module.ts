@@ -1,3 +1,4 @@
+import { TextosServiceService } from './services/textos-service.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -17,6 +18,11 @@ import { SupervisionPageComponent } from './pages/supervision-page/supervision-p
 //IMAGE SLIDER
 import { NgImageSliderModule } from 'ng-image-slider';
 import { EventosPageComponent } from './pages/eventos-page/eventos-page.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -30,15 +36,20 @@ import { EventosPageComponent } from './pages/eventos-page/eventos-page.componen
     ServiciosPageComponent,
     SupervisionPageComponent,
     EventosPageComponent,
-
+    AdminPageComponent,
   ],
   imports: [
     NgImageSliderModule,
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage())
   ],
-  providers: [],
+  providers: [
+    TextosServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

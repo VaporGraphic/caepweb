@@ -1,3 +1,4 @@
+import { TitularPagina, Botones } from './../../models/titulares';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./supervision-page.component.scss']
 })
 export class SupervisionPageComponent implements OnInit {
+
+   //TITULARES
+
+   pageInfo: TitularPagina = {
+    titulo: 'Supervision clínica',
+    subtitulo: 'Forma parte de nuestros grupos de supervisión clínica',
+    descripcion: 'La formación continua es de suma importancia, la mayoría de las veces, con aspectos de intervención clínica desde el punto de vista técnico',
+    icon: '../../../assets/images/supervision/supervision-clinica-icon.webp',
+  }
+
+  primaryBtn: Botones ={
+    texto: 'Estoy interesado',
+    icono: 'bi-telephone',
+    function: ()=>{
+      console.log('Primer btn');
+    }
+  }
+
+  secondaryBtn: Botones ={
+    texto: 'Solicitar más informacion',
+    icono: 'bi-whatsapp',
+    function: ()=>{
+      console.log('secondary');
+    }
+  }
+
+  //UTILS
 
   ListAntencionClinica = [
     {

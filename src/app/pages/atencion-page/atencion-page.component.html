@@ -1,6 +1,8 @@
+<app-appbar-component></app-appbar-component>
+
 <div class="container">
     
-    <h1 class="titleFont text-caep fw-bold text-center text-md-start">Atención clínica</h1>
+    <h1 class="titleFont text-caep fw-bold text-center text-md-start">{{pageInfo.titulo}}</h1>
 
     <!--BANNER OFERTA ACADEMICA-->
     <section class="d-none d-md-block">
@@ -13,15 +15,12 @@
                 
                 <br>
                 <span class="lead fw-bold text-white ">
-                    Tenemos la atención que tú y tu familia se merece
+                    {{pageInfo.subtitulo}}
                 </span>
                 
                 <p class=" text-white pt-2">
-                    Nuestra mision es proveer atencion clinica especializada de la mejor calidad, para niños, adolecentes y parejas.
-                    <br>
-                    <span class="small opacity-75">
-                        Comunícate con nosotros a través de WhatsApp o por teléfono y con gusto agendaremos tu cita
-                    </span>
+                    {{pageInfo.descripcion}}
+                    
                 </p>
                 <div class="row">
                    
@@ -35,11 +34,11 @@
                             </span>
                         </button>
 
-                        <button class="btn ms-2   btn-light" type="button">
+                        <button (click)="primaryBtn.function()" class="btn ms-2 btn-light" type="button">
                             <span class="">
-                                <i class="bi bi-telephone"></i>
+                                <i class="bi {{primaryBtn.icono}}"></i>
                                 <span class="ms-2">
-                                    Agendar una cita
+                                    {{primaryBtn.texto}}
                                 </span>
                             </span>
                         </button>
@@ -62,22 +61,25 @@
         </span>
 
         <div class="row mt-3">
-                   
-            <div class="col d-flex justify-content-between ">
-                <button class="btn  btn-light" type="button">
-                    <span class="">
-                        <i class="bi bi-whatsapp"></i>
-                        <span class="ms-2">
-                            Solicitar más info
+
+            <div class="col-6 ">
+                <button (click)="secondaryBtn.function()" class="btn ms-2 btn-light w-100" type="button">
+                    <span class="text-lines-1 ">
+                        <i class="bi {{secondaryBtn.icono}}"></i>
+                        <span class="ms-2 ">
+                            {{secondaryBtn.texto}}
                         </span>
                     </span>
                 </button>
+            </div>
 
-                <button class="btn ms-2 btn-primary" type="button">
+
+            <div class="col-6 ">
+                <button (click)="primaryBtn.function()" class="btn btn-primary bg-caep w-100 " type="button">
                     <span class="">
-                        <i class="bi bi-telephone"></i>
-                        <span class="ms-2 ">
-                            Agendar una cita
+                        <i class="bi {{primaryBtn.icono}}"></i>
+                        <span class="ms-2 max">
+                            {{primaryBtn.texto}}
                         </span>
                     </span>
                 </button>

@@ -1,3 +1,4 @@
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { EventosPageComponent } from './pages/eventos-page/eventos-page.component';
 import { SupervisionPageComponent } from './pages/supervision-page/supervision-page.component';
 import { ServiciosPageComponent } from './pages/servicios-page/servicios-page.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'servicios', component: ServiciosPageComponent },
   { path: 'supervision', component: SupervisionPageComponent },
   { path: 'eventos', component: EventosPageComponent },
+  { path: 'admin', component: AdminPageComponent },
   { path: '**', pathMatch: 'full', 
         redirectTo: 'servicios' },
 

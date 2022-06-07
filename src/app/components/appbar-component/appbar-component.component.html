@@ -1,4 +1,4 @@
-<div class="container-fluid d-flex align-items-center appbar">
+<div class="container-fluid d-flex align-items-center appbar mb-3">
     <div class="container">
       <div
         class="row d-flex align-items-center text-align-center text-center fw-bold"
@@ -18,7 +18,13 @@
             <div class="row">
               <div class="col-auto px-0" *ngFor="let section of _listSections">
                 <button class="btn text-caep" type="button" (click)="navigateRoute(section.route)">
-                  <span class="fw-bold bntSections">{{ section.titulo }}</span>
+                  <span *ngIf="section.selected == false" class="fw-bold bntSections" >
+                    {{ section.titulo }}
+                  </span>
+
+                  <span *ngIf="section.selected == true" class="fw-bold text-primary" >
+                    {{ section.titulo }}
+                  </span>
                 </button>
               </div>
             <!--SOCIAL MEDIA-->
@@ -47,7 +53,13 @@
                   <!--PAGES-->
                     <button (click)="navigateRoute(section.route)"  ngbDropdownItem *ngFor="let section of _listSections">
                       <button class="btn btnSections" type="button" >
-                          <span class="fw-bold bntSections">{{ section.titulo }}</span>
+                        <span *ngIf="section.selected == false" class="fw-bold bntSections" >
+                          {{ section.titulo }}
+                        </span>
+      
+                        <span *ngIf="section.selected == true" class="fw-bold text-primary" >
+                          {{ section.titulo }}
+                        </span>
                         </button>
                     </button>
                   <!--SOCIAL-->

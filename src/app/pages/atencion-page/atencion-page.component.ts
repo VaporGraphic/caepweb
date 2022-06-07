@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Botones, TitularPagina } from 'src/app/models/titulares';
 
 @Component({
   selector: 'app-atencion-page',
@@ -8,6 +9,33 @@ import { Component, OnInit } from '@angular/core';
 export class AtencionPageComponent implements OnInit {
 
   constructor() { }
+
+  //TITULARES
+
+  pageInfo: TitularPagina = {
+    titulo: 'Atención clínica',
+    subtitulo: 'Tenemos la atención que tú y tu familia se merece',
+    descripcion: 'Nuestra mision es proveer atencion clinica especializada de la mejor calidad, para niños, adolecentes y parejas',
+    icon: '../../../assets/images/atencion/atencion-clinica-icon.webp',
+  }
+
+  primaryBtn: Botones ={
+    texto: 'Agendar una cita',
+    icono: 'bi-telephone',
+    function: ()=>{
+      console.log('Primer btn');
+    }
+  }
+
+  secondaryBtn: Botones ={
+    texto: 'Solicitar más informacion',
+    icono: 'bi-whatsapp',
+    function: ()=>{
+      console.log('secondary');
+    }
+  }
+
+  //UTILS
 
 
   ListAntencionClinica = [

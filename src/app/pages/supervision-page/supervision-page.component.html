@@ -1,41 +1,47 @@
+<app-appbar-component></app-appbar-component>
+
 <div class="container">
     
-    <h1 class="titleFont text-caep fw-bold text-center text-md-start">Supervision clínica</h1>
+    <h1 class="titleFont text-caep fw-bold text-center text-md-start">
+        {{pageInfo.titulo}}
+    </h1>
 
     <!--BANNER OFERTA ACADEMICA-->
     <section class="d-none d-md-block">
         <div class="row bg-caep mt-3 rounded-more px-3">
             <div class="col-12 col-md-auto d-flex justify-content-center p-2 ">
-                <img src="../../../assets/images/supervision/supervision-clinica-icon.webp" class="imgOfertaAcademica" alt="">
+                <img src="{{pageInfo.icon}}" class="imgOfertaAcademica" alt="">
             </div>
             <div class="col d-flex align-items-center">
                 <div class="w-100">
-                
                 <br>
                 <span class="lead fw-bold text-white ">
-                    Forma parte de nuestros grupos de supervisión clínica
+                    {{pageInfo.subtitulo}}
                 </span>
                 
                 <p class=" text-white pt-2 small">
-                    La formación continua es de suma importancia, la mayoría de las veces, con aspectos de intervención clínica desde el punto de vista técnico.
+                    {{pageInfo.descripcion}}
                 </p>
                 <div class="row">
-                   
-                    <div class="col d-flex justify-content-end ">
-                        <button class="btn  btn-link" type="button">
+                    <div class="col">
+                        
+                    </div>
+                    <div class="col-auto">
+                        <button (click)="secondaryBtn.function()" class="btn btn-link" type="button">
                             <span class="text-light">
-                                <i class="bi bi-whatsapp"></i>
+                                <i class="bi {{secondaryBtn.icono}}"></i> 
                                 <span class="ms-2">
-                                    Solicitar más informacion
+                                   {{secondaryBtn.texto}}
                                 </span>
                             </span>
                         </button>
-
-                        <button class="btn ms-2   btn-light" type="button">
+                    </div>
+                    <div class="col-auto">
+                        <button (click)="primaryBtn.function()" class="btn btn-light" type="button">
                             <span class="">
-                                <i class="bi bi-telephone"></i>
+                                <i class="bi {{primaryBtn.icono}}"></i>
                                 <span class="ms-2">
-                                   Estoy interesado
+                                   {{primaryBtn.texto}}
                                 </span>
                             </span>
                         </button>
