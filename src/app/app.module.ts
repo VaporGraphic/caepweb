@@ -1,3 +1,4 @@
+import { CanDeactivateGuard } from './guards/can-deactivate.guard';
 import { TextosServiceService } from './services/textos-service.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,8 +22,11 @@ import { EventosPageComponent } from './pages/eventos-page/eventos-page.componen
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { EditorEventoPageComponent } from './pages/editor/editor-evento-page/editor-evento-page.component';
+import { EditorOfertaPageComponent } from './pages/editor/editor-oferta-page/editor-oferta-page.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +41,8 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
     SupervisionPageComponent,
     EventosPageComponent,
     AdminPageComponent,
+    EditorEventoPageComponent,
+    EditorOfertaPageComponent,
   ],
   imports: [
     NgImageSliderModule,
@@ -48,7 +54,8 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
     provideStorage(() => getStorage())
   ],
   providers: [
-    TextosServiceService
+    TextosServiceService,
+    CanDeactivateGuard
   ],
   bootstrap: [AppComponent]
 })

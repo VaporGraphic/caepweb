@@ -1,7 +1,7 @@
-<app-appbar-component></app-appbar-component>
+<app-appbar-component ></app-appbar-component>
 
 
-<div class="container py-5">
+<div *ngIf="isLogged==false" class="container py-5">
     
     <div class="row ">
         <div class="col-12 d-flex justify-content-center">
@@ -34,7 +34,7 @@
                     <input class="form-control" type="password" placeholder="Contraseña">
                 </div>
                 <br> 
-                <button class="btn btn-primary w-100" type="button">Iniciar sesion</button>
+                <button (click)="login()" class="btn btn-primary w-100" type="button">Iniciar sesion</button>
                 <button class="btn btn-sm btn-link w-100 mt-3" type="button">
                     <span class="small ">
                             ¿Olvidaste tu contraseña? Comunicate con el administrador
@@ -47,6 +47,56 @@
               
            
           </div>
+    </div>
+
+</div>
+
+<div *ngIf="isLogged==true" class="container ">
+    
+    <div  class="row  ">
+        
+        <!--ADMIN ROW-->
+        <div class=" col-3  rounded-more bg-light py-3 px-3">
+            <span class=" lead fw-bold  ">
+                Administrador
+                {{currentPage}}
+            </span>
+            <br>
+           
+            <section class="my-4">
+                <section *ngFor="let button of listBtn " >
+                    <button (click)="changePage(button.title)"  class="btn  text-caep fw-bold px-0  w-100 text-start" type="button">
+                        
+                        <span *ngIf="currentPage != button.title">
+                            <i class="bi {{button.icon}} me-2"></i>
+                            {{button.title}}</span>  
+                        <span *ngIf="currentPage == button.title" class="text-primary">
+                            <i class="bi bi-chevron-compact-right"></i>
+                            <i class="bi {{button.icon}} mx-2 "></i>
+                            {{button.title}}</span>    
+                    </button>
+                </section>
+            </section>
+            <br>
+            <button class="btn btn-sm p-0" type="button">
+                <span class="fw-bold text-danger">
+                    Cerrar sesion
+                </span>
+            </button>
+            
+        </div>
+        <div class="col px-2 px-sm-5">
+            <!--ADMIN OFERTA ACADEMICA-->
+           
+            <app-editor-oferta-page *ngIf="currentPage == 'Oferta academica'" ></app-editor-oferta-page>
+            
+            <!--ADMIN EVENTOS-->
+            
+            <app-editor-evento-page *ngIf="currentPage == 'Eventos'"></app-editor-evento-page>
+
+
+            
+        </div>
     </div>
 
 </div>

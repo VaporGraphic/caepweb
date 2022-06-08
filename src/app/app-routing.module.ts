@@ -1,3 +1,4 @@
+import { CanDeactivateGuard } from './guards/can-deactivate.guard';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { EventosPageComponent } from './pages/eventos-page/eventos-page.component';
 import { SupervisionPageComponent } from './pages/supervision-page/supervision-page.component';
@@ -8,6 +9,7 @@ import { OfertaPageComponent } from './pages/oferta-page/oferta-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+//CUSTOM GUARDS
 import { HomePageComponent } from './pages/home-page/home-page.component';
 
 const routes: Routes = [
@@ -20,6 +22,7 @@ const routes: Routes = [
   { path: 'supervision', component: SupervisionPageComponent },
   { path: 'eventos', component: EventosPageComponent },
   { path: 'admin', component: AdminPageComponent },
+  { path: 'admin/:currentPage', component: AdminPageComponent },
   { path: '**', pathMatch: 'full', 
         redirectTo: 'servicios' },
 
