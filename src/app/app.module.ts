@@ -30,7 +30,9 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { FormsModule } from '@angular/forms';
+import { FirebaseStorageServiceService } from './services/storage/firebase-storage-service.service';
 
+//STORAGE
 
 
 @NgModule({
@@ -64,6 +66,7 @@ import { FormsModule } from '@angular/forms';
   providers: [
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
     AuthfirebaseServiceService,
+    FirebaseStorageServiceService
     
   ],
   bootstrap: [AppComponent]

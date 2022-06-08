@@ -7,11 +7,11 @@
         <div class="container py-3 overflow-auto">
             <div class="row ">
                 <div class="col d-flex align-items-center">
-                    <button (click)="modal.dismiss('Cross click')" class="btn text-primary fw-bold px-0" type="button"><i class="bi bi-chevron-left"></i>Regresar</button>
+                    <button (click)="modal.dismiss('Cross click')" class="btn text-primary fw-bold px-0" type="button"><i class="bi bi-chevron-left"></i>Salir</button>
                 </div>
                 
                 <div class="col-auto">
-                    <button class="btn text-danger fw-bold px-0" type="button">Eliminar</button>
+                    <button (click)="deleteWarinig()" class="btn text-danger fw-bold px-0" type="button">Eliminar</button>
                 </div>
             </div>
             <div class="row ">
@@ -33,10 +33,49 @@
                   </div>
                </div>
                <div class="col-12 col-lg-6">
-                   
+                <form>
+                    <label class=" imageSelector border rounded-more d-flex justify-content-center  align-items-center " for="fileUpload">
+                        <section *ngIf="selectedImageSrc==null || isLoadingImage==true ">
+                            <div class="row opacity-75">
+                                <div class="col-12 small text-muted  text-center">
+                                    Seleccionar imagen
+                                </div>
+                                <div class="col-12 text-center">
+                                    <i class="bi bi-card-image h1 text-muted" *ngIf="isLoadingImage==false"></i>
+                                    <div class="spinner-border text-primary mt-2" role="status" *ngIf="isLoadingImage==true">
+                                        <span class="visually-hidden">Loading...</span>
+                                      </div>
+                                </div>
+                                
+                            </div>
+                        </section> 
+
+                        <section *ngIf="selectedImageSrc!=null && isLoadingImage==false">
+                            <div class="row ">
+                                
+                                <div class="col-12 small text-muted">
+                                    <img class="selectedImage" src="{{selectedImageSrc}}">
+                                </div>
+                                
+                            </div>
+                        </section>
+                    </label>
+                    <div class="row" *ngIf="selectedImageSrc!=null && isLoadingImage==false">
+                        <div class="col d-flex small fw-bold align-items-center">
+                            {{selectedImageName}}
+                        </div>
+                       
+                    </div>
+                </form>
+                  <input type="file" class="visually-hidden" accept="image/*" id="fileUpload" #selectorImagen  (change)="imageSelected($event)">
                </div>
             </div>
-        
+            
+            <div class="row mt-3">
+                <div class="col">
+                    <button (click)="uploadImage()" class="btn btn-primary w-100" type="button">Subir imagen</button>
+                </div>
+            </div>
         
         </div>
 
@@ -51,7 +90,7 @@
             Administrar Eventos
         </div>
         <div class="col-auto ">
-            <button class="btn  btn-primary" type="button" (click)="abrirEditor()">
+            <button class="btn  btn-primary" type="button" >
                 <i class="bi bi-plus-lg"></i>
                 Crear evento 
             </button>
