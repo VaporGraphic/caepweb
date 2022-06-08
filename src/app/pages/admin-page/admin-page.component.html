@@ -1,4 +1,4 @@
-<app-appbar-component ></app-appbar-component>
+<app-appbar-component *ngIf="isLogged== false" ></app-appbar-component>
 
 
 <div *ngIf="isLogged==false" class="container py-5">
@@ -20,10 +20,11 @@
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="my-addon">
-                            <i class="bi bi-person-bounding-box"></i>
+                            <i class="bi bi-envelope"></i>
                         </span>
                     </div>
-                    <input class="form-control" type="text" placeholder="Nombre de usuario">
+                    <!--MAIL INPUT-->
+                    <input class="form-control" type="mail" placeholder="Correo electronico" [(ngModel)]="email" >
                 </div> 
                 <div class="input-group mt-3">
                     <div class="input-group-prepend">
@@ -31,7 +32,8 @@
                             <i class="bi bi-lock-fill"></i>
                         </span>
                     </div>
-                    <input class="form-control" type="password" placeholder="Contraseña">
+                    <!--PASSWORD INPUT-->
+                    <input class="form-control" type="password" placeholder="Contraseña" [(ngModel)]="password" (keyup.enter)="login()">
                 </div>
                 <br> 
                 <button (click)="login()" class="btn btn-primary w-100" type="button">Iniciar sesion</button>
@@ -51,41 +53,110 @@
 
 </div>
 
-<div *ngIf="isLogged==true" class="container ">
+<div *ngIf="isLogged==true" class=" container-fluid ">
+
+   
+
+    <ng-template #content let-offcanvas>
+        <div class="offcanvas-header">
+          <div class="lead " >
+            
+            <div class="row">
+                <div class="col-auto">
+                    <img 
+                    class="brandImageSm " 
+                    src="../../../assets/images/brand/icon-logo-webp.webp"
+                    alt="Logo CAEP"
+                  />
+                </div>
+                
+                <div class="col d-flex align-items-center">
+                    <section>
+                        <span class=" fw-bold  ">
+                            Administrador CAEP
+                        </span>
+                    </section>
+                </div>
+            </div>
+        
+        </div>
+          <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+        </div>
+        <div class="offcanvas-body">
+            <section *ngFor="let button of listBtn " >
+                <button (click)="changePage(button.title); offcanvas.dismiss('Cross click')"  class="btn   px-0  w-100 text-start" type="button">
+                    
+                    <span *ngIf="currentPage != button.title" class="text-muted">
+                        <i class="bi {{button.icon}} me-2"></i>
+                        {{button.title}}</span>  
+                    <span *ngIf="currentPage == button.title" class="text-primary fw-bold">
+                        <i class="bi {{button.icon}} me-2 "></i>
+                        {{button.title}}</span>    
+                </button>
+            </section>
+        </div>
+      </ng-template>
     
     <div  class="row  ">
         
+        <!--SMALL NAVBAR-->
+        <section class=" d-block d-lg-none mb-3">
+            <div class="row pt-4">
+                <div class="col">
+                    <button class="btn  btn-outline-primary" (click)="open(content)"><i class="bi bi-list lead"></i></button>
+                </div>
+                <div class="col-auto">
+                    <button (click)="logout()" class="btn text-danger fw-bold" type="button">Cerrar sesion</button>
+                </div>
+            </div>
+        </section>
+       
+        
         <!--ADMIN ROW-->
-        <div class=" col-3  rounded-more bg-light py-3 px-3">
-            <span class=" lead fw-bold  ">
-                Administrador
-                {{currentPage}}
-            </span>
-            <br>
+        <div class=" col-2  rounded-more border-end py-4 px-3 d-none d-lg-block">
+                <div class="row">
+                <div class="col-auto">
+                    <img 
+                    class="brandImageSm " 
+                    src="../../../assets/images/brand/icon-logo-webp.webp"
+                    alt="Logo CAEP"
+                  />
+                </div>
+                
+                <div class="col d-flex align-items-center">
+                    <section>
+                        <span class="  fw-bold  ">
+                            Administrador CAEP
+                        </span>
+                        <br> <!--CERRAR SESION BTN-->
+                        <button (click)="logout()" class="btn btn-sm p-0" type="button">
+                            <span class="fw-bold text-danger">
+                                Cerrar sesion
+                            </span>
+                        </button>
+                    </section>
+                </div>
+            </div>
+           
            
             <section class="my-4">
                 <section *ngFor="let button of listBtn " >
-                    <button (click)="changePage(button.title)"  class="btn  text-caep fw-bold px-0  w-100 text-start" type="button">
+                    <button (click)="changePage(button.title)"  class="btn   px-0  w-100 text-start" type="button">
                         
-                        <span *ngIf="currentPage != button.title">
+                        <span *ngIf="currentPage != button.title" class="text-muted">
                             <i class="bi {{button.icon}} me-2"></i>
                             {{button.title}}</span>  
-                        <span *ngIf="currentPage == button.title" class="text-primary">
-                            <i class="bi bi-chevron-compact-right"></i>
-                            <i class="bi {{button.icon}} mx-2 "></i>
+                        <span *ngIf="currentPage == button.title" class="text-primary fw-bold">
+                            <i class="bi {{button.icon}} me-2 "></i>
                             {{button.title}}</span>    
                     </button>
                 </section>
             </section>
             <br>
-            <button class="btn btn-sm p-0" type="button">
-                <span class="fw-bold text-danger">
-                    Cerrar sesion
-                </span>
-            </button>
+           
             
         </div>
-        <div class="col px-2 px-sm-5">
+        <div class="col px-4 bg-light py-4 ">
             <!--ADMIN OFERTA ACADEMICA-->
            
             <app-editor-oferta-page *ngIf="currentPage == 'Oferta academica'" ></app-editor-oferta-page>

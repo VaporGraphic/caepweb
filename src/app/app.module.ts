@@ -1,4 +1,4 @@
-import { CanDeactivateGuard } from './guards/can-deactivate.guard';
+import { AuthfirebaseServiceService } from './services/authfirebase-service.service';
 import { TextosServiceService } from './services/textos-service.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,11 +22,16 @@ import { EventosPageComponent } from './pages/eventos-page/eventos-page.componen
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { EditorEventoPageComponent } from './pages/editor/editor-evento-page/editor-evento-page.component';
 import { EditorOfertaPageComponent } from './pages/editor/editor-oferta-page/editor-oferta-page.component';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { FormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -45,17 +50,21 @@ import { EditorOfertaPageComponent } from './pages/editor/editor-oferta-page/edi
     EditorOfertaPageComponent,
   ],
   imports: [
+    FormsModule,
     NgImageSliderModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+ 
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    provideAuth(() => getAuth())
   ],
   providers: [
-    TextosServiceService,
-    CanDeactivateGuard
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
+    AuthfirebaseServiceService,
+    
   ],
   bootstrap: [AppComponent]
 })

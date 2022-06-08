@@ -1,3 +1,4 @@
+import { AuthfirebaseServiceService } from './../../services/authfirebase-service.service';
 import Swal from 'sweetalert2';
 
 import { Component, OnInit } from '@angular/core';
@@ -5,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
 import { LocationStrategy } from '@angular/common';
 
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+
+import {NgbOffcanvas, OffcanvasDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-admin-page',
@@ -14,7 +18,11 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 })
 export class AdminPageComponent implements OnInit {
 
-  listOfertas =[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+  //LOGIN
+
+  email:string = "";
+  password:string = "";
+
     
   //UTILS
 
@@ -34,7 +42,11 @@ export class AdminPageComponent implements OnInit {
 
   ]
 
-  constructor(private locationStrategy: LocationStrategy, private activatedRoute: ActivatedRoute, private router: Router ) {
+  constructor(private locationStrategy: LocationStrategy, 
+    private offcanvasService: NgbOffcanvas,
+    private activatedRoute: ActivatedRoute, 
+    private router: Router, 
+    private authFirebaseService: AuthfirebaseServiceService) {
     
    }
 
@@ -43,11 +55,14 @@ export class AdminPageComponent implements OnInit {
   ngOnInit(): void {
     this.paramsSub = this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
       this.currentPage = params.get('currentPage');
-
-      if(this.currentPage== 'Eventos' || this.currentPage== 'Oferta academica' ){
-
+      if(this.currentPage==null){
+        this.isLogged = false
       }else{
-        this.router.navigateByUrl('/admin' );
+        if(this.currentPage === 'Oferta academica' || this.currentPage === 'Eventos' ){
+          
+        }else{
+          this.router.navigateByUrl('/admin' );
+        }
       }
     });
   }
@@ -60,36 +75,78 @@ export class AdminPageComponent implements OnInit {
   
 
   login(){
+
+    if(this.email && this.password){
+      this.authFirebaseService.loginAdmin(this.email,this.password).then(success=>{
+        this.router.navigateByUrl('/admin/Oferta academica' );
+      }).catch(error=>{
+
+        Swal.fire(
+          {
+            icon:'error',
+            title:'Oops...',
+            text:'No se ha podido iniciar sesion, revisa tus datos'
+          }
+        );
+        
+      });
+    }else{
+      Swal.fire(
+        {
+          icon:'error',
+          title:'Oops...',
+          text:'Rellena todos los campos'
+        }
+      );
+    }
+
+  }
+
+  logout(){
+
+
     Swal.fire({
-      icon: 'success',
-      title: 'Sesion iniciada',
-      text: 'Administra, modifica o elimina los elementos de tu pagina desde aqui',
-      confirmButtonText: 'Entendido',
+      text:'¿Deseas cerrar sesion?',
+      showCancelButton: true,
+      confirmButtonText: 'Cerrar sesion',
+      cancelButtonText:'Cancelar'
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.authFirebaseService.logOut().then(
+          success=>{
+            this.router.navigateByUrl('/admin' );
+          }
+        ).catch(
+          error=>{
+            Swal.fire(
+              {
+                icon:'error',
+                title:'Oops...',
+                text:'No se ha podido cerrar la sesion'
+              }
+            );
+          }
+        )
+      } 
     })
 
-    this.setLogged();
+
     
   }
 
-  setLogged(){
-    this.isLogged = true;
-    history.pushState(null, 'null', location.href);
-    this.locationStrategy.onPopState(() => {
-      history.pushState(null, 'null', location.href);
-    }) 
-  }
 
   changePage(selectedTitle:string){
     this.currentPage= selectedTitle;
     this.router.navigateByUrl(`/admin/${selectedTitle}` );
+  }
 
+  open(content:any) {
+    this.offcanvasService.open(content);
   }
 
 
-  puedeSalir(){
-    return confirm('Para salir del administrador tienes que cerrar sesion');
-  }
-
+  
  
 
 }
